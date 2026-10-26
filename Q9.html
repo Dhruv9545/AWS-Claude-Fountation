@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern Login Page</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+        }
+
+        .login-box {
+            width: 350px;
+            padding: 35px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #cccccc;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #777;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #dddddd;
+        }
+
+        .show-password {
+            font-size: 14px;
+            margin: 8px 0 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #00c6ff;
+            color: #102030;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00e5ff;
+            transform: scale(1.02);
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signup {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #dddddd;
+        }
+
+        .signup a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Please login to your account</p>
+
+        <form onsubmit="login(event)">
+            <input type="email" id="email"
+                   placeholder="Enter your email" required>
+
+            <input type="password" id="password"
+                   placeholder="Enter your password"
+                   minlength="6" required>
+
+            <div class="show-password">
+                <input type="checkbox" id="show"
+                       onchange="togglePassword()"
+                       style="width: auto;">
+                <label for="show">Show password</label>
+            </div>
+
+            <button type="submit">Login</button>
+            <p id="message"></p>
+        </form>
+
+        <p class="signup">
+            Don't have an account? <a href="#">Sign up</a>
+        </p>
+    </div>
+
+    <script>
+        function togglePassword() {
+            let password = document.getElementById("password");
+
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        }
+
+        function login(event) {
+            event.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let message = document.getElementById("message");
+
+            if (email !== "" && password.length >= 6) {
+                message.style.color = "#7CFC98";
+                message.innerHTML = "Login form validated successfully!";
+            } else {
+                message.style.color = "#ff8080";
+                message.innerHTML = "Please enter valid details.";
+            }
+        }
+    </script>
+
+</body>
+</html>
